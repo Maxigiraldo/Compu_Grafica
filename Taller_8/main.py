@@ -22,11 +22,11 @@ def menu():
     print("18. Salir")
 
 def main():
-    path_avion = "avion.jpg"
-    path_playa = "playa.jpg"
-    path_pista = "pista.jpg"
-    path_fondo = "fondo.jpg"
-    path_utp = "utp.jpg"
+    path_avion = "Imagenes/avion.jpg"
+    path_playa = "Imagenes/playa.jpg"
+    path_pista = "Imagenes/pista.jpg"
+    path_fondo = "Imagenes/fondo.jpg"
+    path_utp = "Imagenes/utp.jpg"
     
     while True:
         menu()
