@@ -1,46 +1,67 @@
-import os
+import numpy as np
 
-def ejecutar_ejercicio(nombre_archivo):
-    """Ejecuta un script de ejercicio dado su nombre de archivo."""
-    if os.path.exists(nombre_archivo):
-        with open(nombre_archivo, encoding="utf-8") as f:
-            exec(f.read())
-    else:
-        print(f"El archivo {nombre_archivo} no existe.")
+# Punto 1
+array = np.array(range(1, 11))
+array_reshape = array.reshape(2, 5)
 
-def menu():
-    while True:
-        print("\n--- MENÚ DE EJERCICIOS ---")
-        print("1. Creación y Propiedades de Arrays")
-        print("2. Operaciones Básicas")
-        print("3. Indexación y Slicing")
-        print("4. Broadcasting y Funciones Universales")
-        print("5. Manipulación de Formas y Álgebra Lineal")
-        print("6. Trabajo con Datos Faltantes")
-        print("7. Guardar y Cargar Arrays")
-        print("8. Salir")
-        
-        opcion = input("Selecciona una opción (1-8): ")
+print("Array reshaped:\n", array_reshape)
+print("Forma:", array_reshape.shape)
+print("Tamaño:", array_reshape.size)
+print("Dimensiones:", array_reshape.ndim)
 
-        if opcion == "1":
-            ejecutar_ejercicio("Punto_1.py")
-        elif opcion == "2":
-            ejecutar_ejercicio("Punto_2.py")
-        elif opcion == "3":
-            ejecutar_ejercicio("Punto_3.py")
-        elif opcion == "4":
-            ejecutar_ejercicio("Punto_4.py")
-        elif opcion == "5":
-            ejecutar_ejercicio("Punto_5.py")
-        elif opcion == "6":
-            ejecutar_ejercicio("Punto_6.py")
-        elif opcion == "7":
-            ejecutar_ejercicio("Punto_7.py")
-        elif opcion == "8":
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción no válida, intenta nuevamente.")
+# Punto 2
+a = np.array([1, 2, 3, 4, 5])
+b = np.array([10, 20, 30, 40, 50])
 
-if __name__ == "__main__":
-    menu()
+suma = a + b
+resta = a - b
+producto = a * b
+suma_total = np.sum(a)
+
+print("Suma elemento a elemento:", suma)
+print("Resta elemento a elemento:", resta)
+print("Producto elemento a elemento:", producto)
+print("Suma total de los elementos de 'a':", suma_total)
+
+# Punto 3
+data = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+quinto_elemento = data[4]
+subseccion = data[2:7]
+
+print("Quinto elemento:", quinto_elemento)
+print("Subsección (índices 2 a 6):", subseccion)
+
+# Punto 4
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+A_suma = A + 10
+A_sqrt = np.sqrt(A)
+
+print("Matriz original A:\n", A)
+print("\nMatriz A + 10:\n", A_suma)
+print("\nRaíz cuadrada de A:\n", A_sqrt)
+
+# Punto 5
+M = np.array([[1, 2, 3, 4, 5, 6]])
+M_reshape = M.reshape(3, 2)
+producto_punto = np.dot(M_reshape, M_reshape.T)
+
+print("Matriz original M:\n", M)
+print("\nMatriz M reshaped (3x2):\n", M_reshape)
+print("\nProducto punto de M y su transpuesta:\n", producto_punto)
+
+# Punto 6
+data = np.array([1, 2, np.nan, 4, 5, np.nan, 7, 8, 9])
+data_sin_nan = np.nan_to_num(data, nan=0)
+media = np.mean(data_sin_nan)
+
+print("Array original con NaN:\n", data)
+print("\nArray después de reemplazar NaN por 0:\n", data_sin_nan)
+print("\nMedia del array resultante:", media)
+
+# Punto 7
+data = np.array([10, 20, 30, 40, 50])
+np.save('mi_array.npy', data)
+data_cargado = np.load('mi_array.npy')
+
+print("Array original:\n", data)
+print("\nArray cargado desde el archivo:\n", data_cargado)
