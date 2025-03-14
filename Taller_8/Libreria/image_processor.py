@@ -261,7 +261,7 @@ def midgray(path):
     '''
     imagen = np.array(plt.imread(path))/255 # Normalizar la imagen
 
-    capa_grises = (np.max(imagen, axis=2) + np.min(imagen, axis=2)) / 2 # midgray
+    capa_grises = (np.maximum(imagen[:,:,0], imagen[:,:,1], imagen[:,:,2]) + np.minimum(imagen[:,:,0], imagen[:,:,1], imagen[:,:,2])) / 2 # midgray
 
     plt.imshow(capa_grises, cmap="gray")
     plt.axis("off")
